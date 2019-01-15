@@ -26,8 +26,11 @@ gulp.task('serve', ['sass'], function () {
     server: {
       baseDir: APPPATH.root
     }
-  })
+  });
 });
 
+gulp.task('watch', ['serve', 'sass'], function  () {
+  gulp.watch([SOURCEPATHS.sassSource], ['sass']);
+});
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['watch']);
