@@ -5,3 +5,7 @@ body {
   background-color: red;
   color: $white;
 }
+
+h1 {
+  transition: color .5s ease-in-out;
+}

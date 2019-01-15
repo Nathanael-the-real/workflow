@@ -2,3 +2,7 @@ body {
   background-color: red;
   color: #ffff;
 }
+
+h1 {
+  transition: color .5s ease-in-out;
+}
