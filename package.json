@@ -1,29 +1,29 @@
 {
-	"name": "workflow",
-	"version": "1.0.0",
-	"description": "Web Workflow with NPM, SASS, Gulp, Git and more",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Nathanael-the-real/workflow.git"
-	},
-	"keywords": [
-		"Git",
-		"NPM",
-		"Gulp",
-		"SASS"
-	],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Nathanael-the-real/workflow/issues"
-	},
-	"homepage": "https://github.com/Nathanael-the-real/workflow#readme",
-	"devDependencies": {
-		"gulp": "^4.0.0",
-		"gulp-sass": "^3.0.0"
-	}
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "Web Workflow with NPM, SASS, Gulp, Git and more",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nathanael-the-real/workflow.git"
+  },
+  "keywords": [
+    "Git",
+    "NPM",
+    "Gulp",
+    "SASS"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nathanael-the-real/workflow/issues"
+  },
+  "homepage": "https://github.com/Nathanael-the-real/workflow#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0"
+  }
 }
