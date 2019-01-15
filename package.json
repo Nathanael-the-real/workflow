@@ -10,11 +10,20 @@
 		"type": "git",
 		"url": "git+https://github.com/Nathanael-the-real/workflow.git"
 	},
-	"keywords": [ "Git", "NPM", "Gulp", "SASS" ],
+	"keywords": [
+		"Git",
+		"NPM",
+		"Gulp",
+		"SASS"
+	],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/Nathanael-the-real/workflow/issues"
 	},
-	"homepage": "https://github.com/Nathanael-the-real/workflow#readme"
+	"homepage": "https://github.com/Nathanael-the-real/workflow#readme",
+	"devDependencies": {
+		"gulp": "^4.0.0",
+		"gulp-sass": "^3.0.0"
+	}
 }
