@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 
 
 var SOURCEPATHS = {
-  sassSource: 'src/scss/*.scss'
+  sassSource: 'src/scss/*.scss',
+  htmlSource: 'src/*.html'
 }
 
 var APPPATH = {
@@ -24,6 +25,11 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(APPPATH.css));
 });
 
+gulp.task('copy', function () {
+  gulp.src(SOURCEPATHS.htmlSource)
+    .pipe(gulp.dest(APPPATH.root));
+});
+
 gulp.task('serve', ['sass'], function () {
   browserSync.init([APPPATH.css + '/*.css', APPPATH.root + '/*.html', APPPATH.js + '/*.js'], {
     server: {
@@ -32,8 +38,9 @@ gulp.task('serve', ['sass'], function () {
   });
 });
 
-gulp.task('watch', ['serve', 'sass'], function () {
+gulp.task('watch', ['serve', 'sass', 'copy'], function () {
   gulp.watch([SOURCEPATHS.sassSource], ['sass']);
+  gulp.watch([SOURCEPATHS.htmlSource], ['copy']);
 });
 
 gulp.task('default', ['watch']);
