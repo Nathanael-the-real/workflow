@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   browserify = require('gulp-browserify'),
   clean = require('gulp-clean'),
-  concat = require('gulp-concat');
+  concat = require('gulp-concat'),
+  merge = require('merge-stream');
 
 
 var SOURCEPATHS = {
@@ -37,11 +38,18 @@ gulp.task('clean-scripts', function () {
 })
 
 gulp.task('sass', function () {
-  return gulp.src(SOURCEPATHS.sassSource)
+
+  var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
+  var sassFiles;
+
+
+  sassFiles = gulp.src(SOURCEPATHS.sassSource)
     .pipe(autoprefixer())
     .pipe(sass({
       outputStyle: 'expanded'
     }).on('error', sass.logError))
+  return merge(bootstrapCSS, sassFiles)
+    .pipe(concat('app.css'))
     .pipe(gulp.dest(APPPATH.css));
 });
 
