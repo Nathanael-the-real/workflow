@@ -6,20 +6,24 @@ var gulp = require('gulp'),
   browserify = require('gulp-browserify'),
   clean = require('gulp-clean'),
   concat = require('gulp-concat'),
-  merge = require('merge-stream');
+  merge = require('merge-stream')
+newer = require('gulp-newer'),
+  imagemin = require('gulp-imagemin');
 
 
 var SOURCEPATHS = {
   sassSource: 'src/scss/*.scss',
   htmlSource: 'src/*.html',
-  jsSource: 'src/js/**'
+  jsSource: 'src/js/**',
+  imgSource: 'src/img/**'
 }
 
 var APPPATH = {
   root: 'app/',
   css: 'app/css',
   js: 'app/js',
-  fonts: 'app/fonts'
+  fonts: 'app/fonts',
+  img: 'app/img'
 }
 
 gulp.task('clean-html', function () {
@@ -54,6 +58,13 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(APPPATH.css));
 });
 
+gulp.task('images', function () {
+  return gulp.src(SOURCEPATHS.imgSource)
+    .pipe(newer(APPPATH.img))
+    .pipe(imagemin())
+    .pipe(gulp.dest(APPPATH.img))
+});
+
 gulp.task('moveFonts', function () {
   gulp.src('./node_modules/bootstrap/dist/fonts/*.{eot,svg,ttf,woff,woff2}')
     .pipe(gulp.dest(APPPATH.fonts));
@@ -80,7 +91,7 @@ gulp.task('serve', ['sass'], function () {
   });
 });
 
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts', 'moveFonts'], function () {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts', 'moveFonts', 'images'], function () {
   gulp.watch([SOURCEPATHS.sassSource], ['sass']);
   gulp.watch([SOURCEPATHS.htmlSource], ['copy']);
   gulp.watch([SOURCEPATHS.jsSource], ['scripts']);
