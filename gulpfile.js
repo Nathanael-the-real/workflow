@@ -3,7 +3,8 @@ var gulp = require('gulp'),
   browserSync = require('browser-sync'),
   reload = browserSync.reload,
   autoprefixer = require('gulp-autoprefixer'),
-  clean = require('gulp-clean');
+  clean = require('gulp-clean'),
+  concat = require('gulp-concat');
 
 
 var SOURCEPATHS = {
@@ -45,6 +46,7 @@ gulp.task('sass', function () {
 
 gulp.task('scripts', ['clean-scripts'], function () {
   gulp.src(SOURCEPATHS.jsSource)
+    .pipe(concat('main.js'))
     .pipe(gulp.dest(APPPATH.js));
 });
 
